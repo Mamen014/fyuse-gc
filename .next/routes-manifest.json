@@ -82,7 +82,7 @@
   "dataRoutes": [
     {
       "page": "/dashboard",
-      "dataRouteRegex": "^/_next/data/glV9DzoHvJRk\\-lqqUyD2W/dashboard\\.json$"
+      "dataRouteRegex": "^/_next/data/2qgqsXfPOlcuMxu0mXsQx/dashboard\\.json$"
     }
   ],
   "rsc": {
