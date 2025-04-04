@@ -1,0 +1,25 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/positive-rhino-454912-k2/fyuse-image', '.']
+    env:
+      - 'NEXT_PUBLIC_UPLOAD_API_URL=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/uploadImage'
+      - 'BUCKET_NAME=fyuse-static-assets'
+      - 'NEXT_PUBLIC_FITANALYSIS_API_URL=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/matchingAnalyzer'
+      - 'NEXT_PUBLIC_GOOGLE_CLIENT_ID=671019984810-u8r9lk9efcv16q2dje7vdgp70ul5aqgd.apps.googleusercontent.com'
+      - 'NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=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'
+      - 'NEXT_PUBLIC_TRYON_TRACK=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/tryonTracking'
+      - 'NEXT_PUBLIC_HISTORY_HANDLER=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/historyhandler'
+      - 'NEXT_PUBLIC_REMOVE_ITEM=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/removeFromWardrobe'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/positive-rhino-454912-k2/fyuse-image']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'fyuse-service'
+      - '--image=gcr.io/positive-rhino-454912-k2/fyuse-image'
+      - '--region=asia-southeast2'
+      - '--platform=managed'
+      - '--allow-all'
+      - '--update-env-vars=NEXT_PUBLIC_FITANALYSIS_API_URL=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/matchingAnalyzer,NEXT_PUBLIC_UPLOAD_API_URL=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/uploadImage,NEXT_PUBLIC_TRYON_TRACK=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/tryonTracking,NEXT_PUBLIC_HISTORY_HANDLER=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/historyhandler,NEXT_PUBLIC_REMOVE_ITEM=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/removeFromWardrobe,NEXT_PUBLIC_GOOGLE_CLIENT_ID=671019984810-u8r9lk9efcv16q2dje7vdgp70ul5aqgd.apps.googleusercontent.com,NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=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,BUCKET_NAME=fyuse-static-assets'
+images: ['gcr.io/positive-rhino-454912-k2/fyuse-image']
