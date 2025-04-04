@@ -16,17 +16,18 @@ steps:
       - '--image=gcr.io/positive-rhino-454912-k2/fyuse-image'
       - '--region=asia-southeast1'
       - '--platform=managed'
-      - '--allow-all'
-      - '--update-env-vars=BUCKET_NAME=fyuse-static-assets' # Non-sensitive variable
-      - '--update-env-vars=NEXT_PUBLIC_UPLOAD_API_URL=${_NEXT_PUBLIC_UPLOAD_API_URL}'
-      - '--update-env-vars=NEXT_PUBLIC_FITANALYSIS_API_URL=${_NEXT_PUBLIC_FITANALYSIS_API_URL}'
-      - '--update-env-vars=NEXT_PUBLIC_TRYON_TRACK=${_NEXT_PUBLIC_TRYON_TRACK}'
-      - '--update-env-vars=NEXT_PUBLIC_HISTORY_HANDLER=${_NEXT_PUBLIC_HISTORY_HANDLER}'
-      - '--update-env-vars=NEXT_PUBLIC_REMOVE_ITEM=${_NEXT_PUBLIC_REMOVE_ITEM}'
-      - '--update-env-vars=NEXT_PUBLIC_GOOGLE_CLIENT_ID=${_NEXT_PUBLIC_GOOGLE_CLIENT_ID}'
-      - '--update-env-vars=NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=${_NEXT_PUBLIC_GOOGLE_CLIENT_SECRET}'
-      - '--update-env-vars=NEXTAUTH_URL=${_NEXTAUTH_URL}'
-      - '--update-env-vars=NEXTAUTH_SECRET=${_NEXTAUTH_SECRET}'
+      - '--allow-unauthenticated'
+      - '--update-env-vars=BUCKET_NAME=fyuse-static-assets'
+      - '--update-env-vars=NEXT_PUBLIC_UPLOAD_API_URL=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/uploadImage'
+      - '--update-env-vars=NEXT_PUBLIC_FITANALYSIS_API_URL=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/matchingAnalyzer'
+      - '--update-env-vars=NEXT_PUBLIC_GOOGLE_CLIENT_ID=671019984810-u8r9lk9efcv16q2dje7vdgp70ul5aqgd.apps.googleusercontent.com'
+      - '--update-env-vars=NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=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'
+      - '--update-env-vars=NEXT_PUBLIC_TRYON_TRACK=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/tryonTracking'
+      - '--update-env-vars=NEXT_PUBLIC_HISTORY_HANDLER=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/historyhandler'
+      - '--update-env-vars=NEXT_PUBLIC_REMOVE_ITEM=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/removeFromWardrobe'
+      - '--update-env-vars=NEXTAUTH_URL=https://fyuse-gc-image-671019984810.asia-southeast1.run.app'
+      - '--update-env-vars=NEXTAUTH_SECRET=6Aw2LfF2C08fOiDm8cw5iI6jO9Ln1qfWEXHR4XLVNnc='
+      - '--set-env-vars=CORS_ALLOWED_ORIGINS=https://fyuse-gc-image-671019984810.asia-southeast1.run.app'
 
 # Specify the images to be built
 images: ['gcr.io/positive-rhino-454912-k2/fyuse-image']
@@ -34,25 +35,3 @@ images: ['gcr.io/positive-rhino-454912-k2/fyuse-image']
 # Configure logging options
 options:
   logging: CLOUD_LOGGING_ONLY
-
-# Define substitution variables for secrets
-availableSecrets:
-  secretManager:
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_UPLOAD_API_URL/versions/latest
-      env: '_NEXT_PUBLIC_UPLOAD_API_URL'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_FITANALYSIS_API_URL/versions/latest
-      env: '_NEXT_PUBLIC_FITANALYSIS_API_URL'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_TRYON_TRACK/versions/latest
-      env: '_NEXT_PUBLIC_TRYON_TRACK'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_HISTORY_HANDLER/versions/latest
-      env: '_NEXT_PUBLIC_HISTORY_HANDLER'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_REMOVE_ITEM/versions/latest
-      env: '_NEXT_PUBLIC_REMOVE_ITEM'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_GOOGLE_CLIENT_ID/versions/latest
-      env: '_NEXT_PUBLIC_GOOGLE_CLIENT_ID'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXT_PUBLIC_GOOGLE_CLIENT_SECRET/versions/latest
-      env: '_NEXT_PUBLIC_GOOGLE_CLIENT_SECRET'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXTAUTH_URL/versions/latest
-      env: '_NEXTAUTH_URL'
-    - versionName: projects/positive-rhino-454912-k2/secrets/NEXTAUTH_SECRET/versions/latest
-      env: '_NEXTAUTH_SECRET'
