@@ -27,7 +27,7 @@ steps:
       - '--update-env-vars=NEXT_PUBLIC_REMOVE_ITEM=https://asia-southeast2-positive-rhino-454912-k2.cloudfunctions.net/removeFromWardrobe'
       - '--update-env-vars=NEXTAUTH_URL=https://fyuse-gc-image-671019984810.asia-southeast1.run.app'
       - '--update-env-vars=NEXTAUTH_SECRET=6Aw2LfF2C08fOiDm8cw5iI6jO9Ln1qfWEXHR4XLVNnc='
-      - '--set-env-vars=CORS_ALLOWED_ORIGINS=https://fyuse-gc-image-671019984810.asia-southeast1.run.app'
+      - '--update-env-vars=CORS_ALLOWED_ORIGINS=*'
 
 # Specify the images to be built
 images: ['gcr.io/positive-rhino-454912-k2/fyuse-image']

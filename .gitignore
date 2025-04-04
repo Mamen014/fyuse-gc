@@ -7,7 +7,6 @@ coverage/
 .prettiercache
 .parcel-cache
 .cache
-.cloudbuild.yaml
 
 # IDE specific files
 .idea/
