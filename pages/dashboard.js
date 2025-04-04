@@ -1,13 +1,23 @@
-// pages/dashboard.js
-import { useSession, signIn } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 
-export default function Dashboard() {
-  const { data: session } = useSession();
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
 
   if (!session) {
-    return <button onClick={() => signIn('google')}>Sign in with Google</button>;
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
   }
 
+  return {
+    props: { session },
+  };
+}
+
+export default function Dashboard({ session }) {
   return (
     <div>
       <h1>Welcome, {session.user.name}!</h1>

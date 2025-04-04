@@ -9,6 +9,13 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals")];
-
-export default eslintConfig;
+export default [
+  ...compat.extends("next/core-web-vitals"),
+  {
+    rules: {
+      "no-unused-vars": "warn", // Warn about unused variables
+      "react/react-in-jsx-scope": "off", // Disable React import requirement for JSX (React 17+)
+      "no-console": "warn", // Warn about console usage
+    },
+  },
+];

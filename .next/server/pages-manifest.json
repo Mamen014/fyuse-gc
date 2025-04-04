@@ -1,3 +1,11 @@
 {
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
+  "/404": "pages/404.html",
+  "/contact": "pages/contact.html",
+  "/about": "pages/about.html",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/features": "pages/features.html",
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/dashboard": "pages/dashboard.js",
+  "/_document": "pages/_document.js"
 }
