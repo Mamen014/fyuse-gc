@@ -19,7 +19,7 @@ var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.v((parentImport) => {
     return Promise.all([
-  "static/chunks/node_modules_ee8fbbf8._.js",
+  "static/chunks/node_modules_123d250c._.js",
   "static/chunks/_597c47f6._.js",
   "static/chunks/components_VirtualTryOn_jsx_58e9a56b._.js"
 ].map((chunk) => __turbopack_context__.l(chunk))).then(() => {

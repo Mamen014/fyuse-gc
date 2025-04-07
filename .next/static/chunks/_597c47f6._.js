@@ -670,6 +670,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/react/index.js [app-client] (ecmascript)"); // Import useSession and signIn
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PricingPlanCard$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/PricingPlanCard.jsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -677,8 +678,10 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 const VirtualTryOn = ()=>{
     _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { data: session, status } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSession"])(); // Use useSession instead of useAuth
     const [userImage, setUserImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [apparelImage, setApparelImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -811,6 +814,7 @@ const VirtualTryOn = ()=>{
             });
             if (response.data?.analysis?.analysisText) {
                 setMatchingAnalysis(response.data.analysis.analysisText);
+                router.push(`/virtual-tryon-result?matchingAnalysis=${encodeURIComponent(response.data.analysis.analysisText)}`);
             } else {
                 setError("Matching Analysis failed.");
             }
@@ -882,7 +886,7 @@ const VirtualTryOn = ()=>{
             children: "Loading..."
         }, void 0, false, {
             fileName: "[project]/components/VirtualTryOn.jsx",
-            lineNumber: 219,
+            lineNumber: 223,
             columnNumber: 12
         }, this);
     }
@@ -897,7 +901,7 @@ const VirtualTryOn = ()=>{
                         children: "Virtual Try-On"
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 225,
+                        lineNumber: 229,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -905,20 +909,20 @@ const VirtualTryOn = ()=>{
                         children: "Experience the perfect fit."
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 226,
+                        lineNumber: 230,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/VirtualTryOn.jsx",
-                lineNumber: 224,
+                lineNumber: 228,
                 columnNumber: 7
             }, this),
             showPricingPlans ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PricingPlanCard$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 onSelectPlan: (plan)=>alert(`Plan selected: ${plan}`)
             }, void 0, false, {
                 fileName: "[project]/components/VirtualTryOn.jsx",
-                lineNumber: 229,
+                lineNumber: 233,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-[#1a1a2f] w-full max-w-4xl rounded-lg shadow-md p-8 space-y-6",
@@ -928,7 +932,7 @@ const VirtualTryOn = ()=>{
                         children: "Step 1: Upload Your Photos"
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 232,
+                        lineNumber: 236,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -942,7 +946,7 @@ const VirtualTryOn = ()=>{
                                         children: "Your Photo"
                                     }, void 0, false, {
                                         fileName: "[project]/components/VirtualTryOn.jsx",
-                                        lineNumber: 237,
+                                        lineNumber: 241,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -953,7 +957,7 @@ const VirtualTryOn = ()=>{
                                         id: "userPhoto"
                                     }, void 0, false, {
                                         fileName: "[project]/components/VirtualTryOn.jsx",
-                                        lineNumber: 238,
+                                        lineNumber: 242,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -965,7 +969,7 @@ const VirtualTryOn = ()=>{
                                             className: "mx-auto max-h-48 object-contain rounded-lg"
                                         }, void 0, false, {
                                             fileName: "[project]/components/VirtualTryOn.jsx",
-                                            lineNumber: 247,
+                                            lineNumber: 251,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex flex-col items-center justify-center h-48",
@@ -974,23 +978,23 @@ const VirtualTryOn = ()=>{
                                                 children: "Click to upload"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/VirtualTryOn.jsx",
-                                                lineNumber: 254,
+                                                lineNumber: 258,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/VirtualTryOn.jsx",
-                                            lineNumber: 253,
+                                            lineNumber: 257,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/VirtualTryOn.jsx",
-                                        lineNumber: 245,
+                                        lineNumber: 249,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/VirtualTryOn.jsx",
-                                lineNumber: 236,
+                                lineNumber: 240,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1001,7 +1005,7 @@ const VirtualTryOn = ()=>{
                                         children: "Clothing Item"
                                     }, void 0, false, {
                                         fileName: "[project]/components/VirtualTryOn.jsx",
-                                        lineNumber: 260,
+                                        lineNumber: 264,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1012,7 +1016,7 @@ const VirtualTryOn = ()=>{
                                         id: "apparelPhoto"
                                     }, void 0, false, {
                                         fileName: "[project]/components/VirtualTryOn.jsx",
-                                        lineNumber: 261,
+                                        lineNumber: 265,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1024,7 +1028,7 @@ const VirtualTryOn = ()=>{
                                             className: "mx-auto max-h-48 object-contain rounded-lg"
                                         }, void 0, false, {
                                             fileName: "[project]/components/VirtualTryOn.jsx",
-                                            lineNumber: 270,
+                                            lineNumber: 274,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex flex-col items-center justify-center h-48",
@@ -1033,29 +1037,29 @@ const VirtualTryOn = ()=>{
                                                 children: "Click to upload"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/VirtualTryOn.jsx",
-                                                lineNumber: 277,
+                                                lineNumber: 281,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/VirtualTryOn.jsx",
-                                            lineNumber: 276,
+                                            lineNumber: 280,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/VirtualTryOn.jsx",
-                                        lineNumber: 268,
+                                        lineNumber: 272,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/VirtualTryOn.jsx",
-                                lineNumber: 259,
+                                lineNumber: 263,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 235,
+                        lineNumber: 239,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1068,7 +1072,7 @@ const VirtualTryOn = ()=>{
                                 children: "Generate Try-On Result"
                             }, void 0, false, {
                                 fileName: "[project]/components/VirtualTryOn.jsx",
-                                lineNumber: 284,
+                                lineNumber: 288,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1078,13 +1082,13 @@ const VirtualTryOn = ()=>{
                                 children: "Analyze Fit"
                             }, void 0, false, {
                                 fileName: "[project]/components/VirtualTryOn.jsx",
-                                lineNumber: 291,
+                                lineNumber: 295,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 283,
+                        lineNumber: 287,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1096,7 +1100,7 @@ const VirtualTryOn = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 299,
+                        lineNumber: 303,
                         columnNumber: 11
                     }, this),
                     polling && !resultImageUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1104,7 +1108,7 @@ const VirtualTryOn = ()=>{
                         children: "Waiting for result... polling server."
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 303,
+                        lineNumber: 307,
                         columnNumber: 13
                     }, this),
                     loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1112,7 +1116,7 @@ const VirtualTryOn = ()=>{
                         children: "Processing..."
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 305,
+                        lineNumber: 309,
                         columnNumber: 23
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1120,13 +1124,13 @@ const VirtualTryOn = ()=>{
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 306,
+                        lineNumber: 310,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/VirtualTryOn.jsx",
-                lineNumber: 231,
+                lineNumber: 235,
                 columnNumber: 9
             }, this),
             resultImageUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1137,7 +1141,7 @@ const VirtualTryOn = ()=>{
                         children: "Step 2: Try-On Result"
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 311,
+                        lineNumber: 315,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -1146,13 +1150,13 @@ const VirtualTryOn = ()=>{
                         className: "rounded-lg shadow-md mx-auto max-h-96 object-contain"
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 312,
+                        lineNumber: 316,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/VirtualTryOn.jsx",
-                lineNumber: 310,
+                lineNumber: 314,
                 columnNumber: 9
             }, this),
             matchingAnalysis && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1163,7 +1167,7 @@ const VirtualTryOn = ()=>{
                         children: "Fit Analysis"
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 321,
+                        lineNumber: 325,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1171,24 +1175,25 @@ const VirtualTryOn = ()=>{
                         children: matchingAnalysis
                     }, void 0, false, {
                         fileName: "[project]/components/VirtualTryOn.jsx",
-                        lineNumber: 322,
+                        lineNumber: 326,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/VirtualTryOn.jsx",
-                lineNumber: 320,
+                lineNumber: 324,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/VirtualTryOn.jsx",
-        lineNumber: 223,
+        lineNumber: 227,
         columnNumber: 5
     }, this);
 };
-_s(VirtualTryOn, "R0+nKycy9Hu1oxE1j36c5JqlYXY=", false, function() {
+_s(VirtualTryOn, "1wnXiSDa0vixv1qFPygTb8MbVao=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSession"]
     ];
 });

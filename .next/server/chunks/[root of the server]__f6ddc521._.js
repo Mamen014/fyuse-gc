@@ -29,6 +29,7 @@ module.exports = mod;
 
 var { g: global, __dirname } = __turbopack_context__;
 {
+// pages/api/auth/[...nextauth].js
 __turbopack_context__.s({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -36,33 +37,59 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$next$2d$auth__$5b$external
 var __TURBOPACK__imported__module__$5b$externals$5d2f$next$2d$auth$2f$providers$2f$google__$5b$external$5d$__$28$next$2d$auth$2f$providers$2f$google$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/next-auth/providers/google [external] (next-auth/providers/google, cjs)");
 ;
 ;
+// Log environment variables for debugging
+console.log('NEXTAUTH_URL:', process.env.NEXTAUTH_URL);
+console.log('NEXTAUTH_SECRET:', process.env.NEXTAUTH_SECRET);
+console.log('NEXT_PUBLIC_GOOGLE_CLIENT_ID:', ("TURBOPACK compile-time value", "671019984810-u8r9lk9efcv16q2dje7vdgp70ul5aqgd.apps.googleusercontent.com"));
+console.log('NEXT_PUBLIC_GOOGLE_CLIENT_SECRET:', ("TURBOPACK compile-time value", "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"));
 const __TURBOPACK__default__export__ = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$next$2d$auth__$5b$external$5d$__$28$next$2d$auth$2c$__cjs$29$__["default"])({
+    // Configure authentication providers
     providers: [
         (0, __TURBOPACK__imported__module__$5b$externals$5d2f$next$2d$auth$2f$providers$2f$google__$5b$external$5d$__$28$next$2d$auth$2f$providers$2f$google$2c$__cjs$29$__["default"])({
             clientId: ("TURBOPACK compile-time value", "671019984810-u8r9lk9efcv16q2dje7vdgp70ul5aqgd.apps.googleusercontent.com"),
             clientSecret: ("TURBOPACK compile-time value", "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")
         })
     ],
+    // Use a secret for signing cookies and tokens
     secret: process.env.NEXTAUTH_SECRET,
+    // Use JWT-based sessions
     session: {
         strategy: 'jwt'
     },
+    // Custom callbacks for handling JWT and session data
     callbacks: {
         async jwt ({ token, account }) {
-            if (account) {
-                // Add custom claims to the token
-                token.accessToken = account.access_token;
-                token.userId = account.providerAccountId; // Add any other custom data here
+            try {
+                // Add custom claims to the token if an account is present
+                if (account) {
+                    console.log('JWT Callback - Account:', account);
+                    token.accessToken = account.access_token;
+                    token.userId = account.providerAccountId; // Add any other custom data here
+                }
+                return token;
+            } catch (err) {
+                console.error('JWT Callback Error:', err);
+                throw err; // Rethrow the error to prevent silent failures
             }
-            return token; // Return the token as an object (do not sign it manually)
         },
         async session ({ session, token }) {
-            // Attach the access token and other custom data to the session
-            session.user.accessToken = token.accessToken;
-            session.user.userId = token.userId; // Attach custom claims
-            return session;
+            try {
+                // Attach custom claims to the session
+                if (!session.user) {
+                    session.user = {}; // Ensure session.user exists
+                }
+                session.user.accessToken = token.accessToken;
+                session.user.userId = token.userId; // Attach custom claims
+                console.log('Session Callback - Session:', session);
+                return session;
+            } catch (err) {
+                console.error('Session Callback Error:', err);
+                throw err; // Rethrow the error to prevent silent failures
+            }
         }
-    }
+    },
+    // Optional: Add debug logging for development
+    debug: ("TURBOPACK compile-time value", "development") !== 'production'
 });
 }}),
 "[project]/node_modules/next/dist/esm/server/route-modules/pages-api/module.compiled.js [api] (ecmascript)": (function(__turbopack_context__) {

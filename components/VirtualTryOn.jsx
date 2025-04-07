@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSession, signIn } from 'next-auth/react'; // Import useSession and signIn
 import PricingPlans from '@/components/PricingPlanCard';
+import { useRouter } from 'next/navigation';
+
 
 const VirtualTryOn = () => {
+  const router = useRouter();
   const { data: session, status } = useSession(); // Use useSession instead of useAuth
   const [userImage, setUserImage] = useState(null);
   const [apparelImage, setApparelImage] = useState(null);
@@ -148,6 +151,7 @@ const handleMatchingAnalysis = async () => {
 
     if (response.data?.analysis?.analysisText) {
       setMatchingAnalysis(response.data.analysis.analysisText);
+      router.push(`/virtual-tryon-result?matchingAnalysis=${encodeURIComponent(response.data.analysis.analysisText)}`);
     } else {
       setError("Matching Analysis failed.");
     }
