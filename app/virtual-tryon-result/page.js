@@ -5,11 +5,12 @@ import { useSearchParams } from 'next/navigation';
 const VirtualTryOnResultPage = () => {
   const searchParams = useSearchParams();
   const matchingAnalysis = searchParams.get('matchingAnalysis');
-  const [formattedAnalysis, setFormattedAnalysis] = useState('');
+  const [analysisLines, setAnalysisLines] = useState([]);
 
   useEffect(() => {
     if (matchingAnalysis) {
-      setFormattedAnalysis(formatMatchingAnalysis(matchingAnalysis));
+      const lines = formatMatchingAnalysis(matchingAnalysis);
+      setAnalysisLines(lines);
     }
   }, [matchingAnalysis]);
 
@@ -19,31 +20,50 @@ const VirtualTryOnResultPage = () => {
     let match;
 
     while ((match = pattern.exec(rawString)) !== null) {
-      const rawKey = match[1]?.trim() || '';
-      const rawValue = match[2]?.trim() || '';
-
-      const key = rawKey.replace(/[:：]+$/, '');
-      const value = rawValue.replace(/^[:：]+/, '');
-
+      const key = match[1]?.trim() || '';
+      const value = match[2]?.trim() || '';
       if (key && value) {
-        if (key === 'Matching Description') {
-          lines.push(`\n${key}: ${value}`);
-        } else {
-          lines.push(`${key}: ${value}`);
-        }
+        lines.push({ key, value });
       }
     }
 
-    return lines.join('\n');
+    return lines;
   };
 
+  const matchValue = analysisLines.find(line =>
+    line.key.toLowerCase().includes('match')
+  )?.value;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white font-sans flex items-center justify-center px-4">
-      <main className="w-full max-w-4xl bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/10 whitespace-pre-line">
-        <h1 className="text-3xl font-bold text-blue-300 mb-6 text-center">Fit Analysis</h1>
-        <p className="text-lg text-gray-200">
-          {formattedAnalysis || 'No analysis available. Please upload your photo and clothing item to generate a fit analysis.'}
-        </p>
+    <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center p-4">
+      <main className="w-full max-w-3xl bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-[0_0_30px_rgba(163,113,247,0.2)] p-8 text-white">
+        <h1 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Matching Analysis</h1>
+        <p className="text-center text-gray-300 mb-10">Explore your detailed fit analysis results</p>
+
+        {matchValue && (
+          <div className="flex justify-center mb-10">
+            <div className="relative w-44 h-44 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-600 via-pink-500 to-indigo-500 p-1">
+              <div className="w-full h-full flex flex-col items-center justify-center rounded-full bg-[#1c1b3a] text-purple-300 font-bold text-4xl shadow-inner">
+                {matchValue}
+                <span className="text-sm text-purple-400 font-medium mt-2">Match Score</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="text-left">
+          <h2 className="text-2xl font-semibold text-white mb-4">Detailed Analysis</h2>
+          <div className="space-y-3 text-gray-200 text-base">
+            {analysisLines
+              .filter(line => !line.key.toLowerCase().includes('match'))
+              .map((line, index) => (
+                <div key={index}>
+                  <span className="text-white font-medium">{line.key}:</span>{' '}
+                  <span className="text-purple-100">{line.value}</span>
+                </div>
+              ))}
+          </div>
+        </div>
       </main>
     </div>
   );

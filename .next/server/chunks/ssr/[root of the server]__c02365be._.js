@@ -24,168 +24,133 @@ const mod = __turbopack_context__.x("next/dist/server/app-render/work-async-stor
 
 module.exports = mod;
 }}),
-"[project]/app/virtual-tryon-result/page.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/app/page.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "default": (()=>MatchingResultPage)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 'use client';
 ;
 ;
-;
-const VirtualTryOnResultPage = ()=>{
-    const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSearchParams"])();
-    const matchingAnalysis = searchParams.get('matchingAnalysis');
-    const [analysisLines, setAnalysisLines] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (matchingAnalysis) {
-            const lines = formatMatchingAnalysis(matchingAnalysis);
-            setAnalysisLines(lines);
-        }
-    }, [
-        matchingAnalysis
-    ]);
-    const formatMatchingAnalysis = (rawString)=>{
-        const lines = [];
-        const pattern = /\*\*(.*?)\*\*[:：]?\s*([^*]*)/g;
-        let match;
-        while((match = pattern.exec(rawString)) !== null){
-            const key = match[1]?.trim() || '';
-            const value = match[2]?.trim() || '';
-            if (key && value) {
-                lines.push({
-                    key,
-                    value
-                });
-            }
-        }
-        return lines;
+function formatMatchingAnalysis(analysis) {
+    return {
+        'Match Score': `${(analysis.matchValue * 100).toFixed(2)}%`,
+        Gender: analysis.gender || 'Unknown',
+        'Body Shape': analysis.bodyShape || 'Unknown',
+        'Skin Tone': analysis.skinTone || 'Unknown',
+        'Clothing Style': analysis.clothingStyle || 'Unknown',
+        'Color Match': analysis.colorMatch || 'Unknown',
+        'Fit Assessment': analysis.fitAssessment || 'Unknown',
+        'Overall Impression': analysis.overallImpression || 'Unknown'
     };
-    const matchValue = analysisLines.find((line)=>line.key.toLowerCase().includes('match'))?.value;
+}
+function MatchingResultPage() {
+    const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSearchParams"])();
+    const matchingAnalysisParam = searchParams.get('matchingAnalysis');
+    const matchingAnalysis = matchingAnalysisParam ? JSON.parse(decodeURIComponent(matchingAnalysisParam)) : null;
+    if (!matchingAnalysis) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex items-center justify-center",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-xl",
+                children: "No analysis data provided."
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 26,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/app/page.js",
+            lineNumber: 25,
+            columnNumber: 7
+        }, this);
+    }
+    const analysisLines = formatMatchingAnalysis(matchingAnalysis);
+    const matchValue = analysisLines['Match Score'];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center p-4",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-            className: "w-full max-w-3xl bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-[0_0_30px_rgba(163,113,247,0.2)] p-8 text-white",
+        className: "min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex items-center justify-center px-6",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-full max-w-3xl rounded-2xl p-8 bg-[#1a1a2f] shadow-2xl backdrop-blur-md bg-opacity-80",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                    className: "text-4xl font-extrabold text-center mb-2 tracking-tight",
-                    children: "Matching Analysis"
+                    className: "text-4xl font-bold text-center mb-10 text-white",
+                    children: "Matching Analysis Results"
                 }, void 0, false, {
-                    fileName: "[project]/app/virtual-tryon-result/page.js",
-                    lineNumber: 40,
+                    fileName: "[project]/app/page.js",
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "text-center text-gray-300 mb-10",
-                    children: "Explore your detailed fit analysis results"
-                }, void 0, false, {
-                    fileName: "[project]/app/virtual-tryon-result/page.js",
-                    lineNumber: 41,
-                    columnNumber: 9
-                }, this),
-                matchValue && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex justify-center mb-10",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative w-44 h-44 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-600 via-pink-500 to-indigo-500 p-1",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-full h-full flex flex-col items-center justify-center rounded-full bg-[#1c1b3a] text-purple-300 font-bold text-4xl shadow-inner",
+                        className: "w-40 h-40 rounded-full bg-gradient-to-r from-purple-600 to-indigo-500 flex items-center justify-center text-white text-2xl font-bold shadow-xl",
+                        children: matchValue
+                    }, void 0, false, {
+                        fileName: "[project]/app/page.js",
+                        lineNumber: 40,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/app/page.js",
+                    lineNumber: 39,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                    className: "space-y-4",
+                    children: Object.entries(analysisLines).map(([key, value])=>{
+                        if (key === 'Match Score') return null;
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                            className: "bg-[#24243e] p-4 rounded-xl shadow-md border border-gray-700",
                             children: [
-                                matchValue,
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm text-purple-400 font-medium mt-2",
-                                    children: "Match Score"
+                                    className: "font-semibold text-purple-300",
+                                    children: [
+                                        key,
+                                        ":"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/page.js",
+                                    lineNumber: 50,
+                                    columnNumber: 17
+                                }, this),
+                                ' ',
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-white",
+                                    children: value
                                 }, void 0, false, {
-                                    fileName: "[project]/app/virtual-tryon-result/page.js",
-                                    lineNumber: 48,
+                                    fileName: "[project]/app/page.js",
+                                    lineNumber: 51,
                                     columnNumber: 17
                                 }, this)
                             ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/virtual-tryon-result/page.js",
-                            lineNumber: 46,
+                        }, key, true, {
+                            fileName: "[project]/app/page.js",
+                            lineNumber: 49,
                             columnNumber: 15
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/virtual-tryon-result/page.js",
-                        lineNumber: 45,
-                        columnNumber: 13
-                    }, this)
+                        }, this);
+                    })
                 }, void 0, false, {
-                    fileName: "[project]/app/virtual-tryon-result/page.js",
-                    lineNumber: 44,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "text-left",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-2xl font-semibold text-white mb-4",
-                            children: "Detailed Analysis"
-                        }, void 0, false, {
-                            fileName: "[project]/app/virtual-tryon-result/page.js",
-                            lineNumber: 55,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "space-y-3 text-gray-200 text-base",
-                            children: analysisLines.filter((line)=>!line.key.toLowerCase().includes('match')).map((line, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-white font-medium",
-                                            children: [
-                                                line.key,
-                                                ":"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/virtual-tryon-result/page.js",
-                                            lineNumber: 61,
-                                            columnNumber: 19
-                                        }, this),
-                                        ' ',
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-purple-100",
-                                            children: line.value
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/virtual-tryon-result/page.js",
-                                            lineNumber: 62,
-                                            columnNumber: 19
-                                        }, this)
-                                    ]
-                                }, index, true, {
-                                    fileName: "[project]/app/virtual-tryon-result/page.js",
-                                    lineNumber: 60,
-                                    columnNumber: 17
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/app/virtual-tryon-result/page.js",
-                            lineNumber: 56,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/app/virtual-tryon-result/page.js",
-                    lineNumber: 54,
+                    fileName: "[project]/app/page.js",
+                    lineNumber: 45,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
-            fileName: "[project]/app/virtual-tryon-result/page.js",
-            lineNumber: 39,
+            fileName: "[project]/app/page.js",
+            lineNumber: 36,
             columnNumber: 7
         }, this)
     }, void 0, false, {
-        fileName: "[project]/app/virtual-tryon-result/page.js",
-        lineNumber: 38,
+        fileName: "[project]/app/page.js",
+        lineNumber: 35,
         columnNumber: 5
     }, this);
-};
-const __TURBOPACK__default__export__ = VirtualTryOnResultPage;
+}
 }}),
 "[project]/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/app-router-context.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
 
@@ -1985,4 +1950,4 @@ module.exports = __turbopack_context__.r("[project]/node_modules/next/dist/clien
 
 };
 
-//# sourceMappingURL=%5Broot%20of%20the%20server%5D__4cf778f3._.js.map
+//# sourceMappingURL=%5Broot%20of%20the%20server%5D__c02365be._.js.map
